@@ -8,11 +8,14 @@ class ApplicationController < ActionController::Base
   protected
 
   def add_column
-    registration_params = [:name, :age, :gender, :email, :password, :password_confirmation]
+    registration_params = [:username, :name, :age, :gender, :email, :password, :password_confirmation]
     @page = 1
     if params[:action] == 'create'
       devise_parameter_sanitizer.for(:sign_up) {
         |u| u.permit(registration_params)
+      }
+      devise_parameter_sanitizer.for(:sign_in) {
+        |u| u.permit(registration_params << :remember_me)
       }
     elsif params[:action] == 'update'
       devise_parameter_sanitizer.for(:account_update) {

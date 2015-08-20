@@ -3,6 +3,7 @@
 <%= link_to "로그인", "/users/sign_in", class:"btn btn-default" %>
 <%= link_to "회원가입", "/users/sign_up", class:"btn btn-default" %>
 <% else %>
+<p>아이디 : <%= current_user.username %></p>
 <p>계정주소 : <%= current_user.email %></p>
 <p>이름 : <%= current_user.name %></p>
 <p>나이 대  : <%= current_user.age %></p>

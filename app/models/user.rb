@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+	validates :username, presence: true, :uniqueness => { :case_sensitive => false }
 	validates :name, presence: true
 	validates :age, presence: true
 	validates :gender, presence: true
