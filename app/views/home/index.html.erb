@@ -1,0 +1,12 @@
+<h2>첫 페이지</h2>
+<% unless user_signed_in? %>
+<%= link_to "로그인", "/users/sign_in", class:"btn btn-default" %>
+<%= link_to "회원가입", "/users/sign_up", class:"btn btn-default" %>
+<% else %>
+<p>계정주소 : <%= current_user.email %></p>
+<p>이름 : <%= current_user.name %></p>
+<p>나이 대  : <%= current_user.age %></p>
+<p>성별 : <%= current_user.gender %></p>
+<%= link_to "정보수정", "/users/edit", class:"btn btn-default" %>
+<%= link_to "로그아웃", "/users/sign_out", class:"btn btn-default" %>
+<% end %>
